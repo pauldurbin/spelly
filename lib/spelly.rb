@@ -5,8 +5,7 @@ require 'ffi/hunspell'
 class Spelly
   attr_accessor :dict
 
-  def initialize(language: 'en_GB')
-    @path = File.expand_path('../lib/dict', File.dirname(__FILE__))
+  def initialize(language)
     @language = language
   end
 
@@ -20,11 +19,11 @@ class Spelly
     results
   end
 
-  attr_accessor :path, :language
+  attr_accessor :language
 
   private
 
   def dictionary
-    @dictionary ||= FFI::Hunspell.new(path, language)
+    @dictionary ||= FFI::Hunspell.dict(language)
   end
 end
