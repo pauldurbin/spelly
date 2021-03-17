@@ -14,8 +14,7 @@ class Spelly
     results = []
     words.each do |word|
       unless dictionary.check?(word)
-        suggestions = dictionary.suggest(word)
-        results << { word: word, suggest: suggestions } unless suggestions.blank?
+        results << { word: word, suggest: dictionary.suggest(word) }
       end
     end
     results
