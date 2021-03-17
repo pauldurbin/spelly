@@ -7,6 +7,7 @@ class Spelly
 
   def initialize(language)
     @language = language
+    FFI::Hunspell.directories = FFI::Hunspell.directories.push("#{Gem.loaded_specs['spelly'].full_gem_path}/lib/dict")
   end
 
   def spell_check(words)
